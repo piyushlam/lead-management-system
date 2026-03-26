@@ -1,0 +1,54 @@
+<div class="sidebar">
+  <!-- Logo / App name -->
+  <div class="sidebar-header">
+    <div class="app-logo-circle">L</div>
+    <div class="app-text">
+      <div class="app-title">Lead CRM</div>
+      <div class="app-subtitle">Lead Management System</div>
+    </div>
+  </div>
+
+  <!-- MAIN MENU heading -->
+  <div class="menu-section">
+    <div class="menu-heading">MAIN MENU</div>
+
+    <nav class="sidebar-menu">
+      <a
+        routerLink="/dashboard"
+        routerLinkActive="active"
+        class="menu-item"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <i class="bi bi-speedometer2"></i>
+        <span>Dashboard</span>
+      </a>
+
+      <a routerLink="/leads" routerLinkActive="active" class="menu-item">
+        <i class="bi bi-people"></i>
+        <span>All Leads</span>
+      </a>
+
+      <!-- ✅ Add Lead hidden (data Postman/other module se aa raha) -->
+      <!--
+      <a routerLink="/add-lead" routerLinkActive="active" class="menu-item">
+        <i class="bi bi-plus-circle"></i>
+        <span>Add Lead</span>
+      </a>
+      -->
+    </nav>
+  </div>
+
+  <!-- Footer: help + logout at bottom -->
+  <div class="sidebar-footer">
+    <div class="help-box">
+      <div class="help-title">Helpdesk</div>
+      <div class="help-phone">1800-266-0018</div>
+      <div class="help-email">helpdesk@heromotocorp.com</div>
+    </div>
+
+    <button class="logout-btn" (click)="onLogout()">
+      <i class="bi bi-box-arrow-right"></i>
+      <span>Sign Out</span>
+    </button>
+  </div>
+</div>

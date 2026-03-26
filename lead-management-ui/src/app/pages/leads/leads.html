@@ -1,0 +1,158 @@
+<div class="leads-page">
+  <!-- HEADER -->
+  <div class="leads-header">
+    <div>
+      <div class="page-title">All Leads</div>
+      <div class="page-subtitle">
+        View, search and filter all leads captured in the system.
+      </div>
+    </div>
+
+    <div class="right-filters">
+      <div class="search-box">
+        <input
+          type="text"
+          [(ngModel)]="searchText"
+          placeholder="Search by Lead ID, Name, Mobile, City"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- STATUS FILTER CHIPS -->
+  <div class="status-chips">
+    <button
+      type="button"
+      class="chip"
+      [class.active]="selectedStatus === 'ALL'"
+      (click)="setStatusFilter('ALL')"
+    >
+      All ({{ leads.length }})
+    </button>
+
+    <button
+      type="button"
+      class="chip"
+      [class.active]="selectedStatus === 'QUALIFIED'"
+      (click)="setStatusFilter('QUALIFIED')"
+    >
+      Qualified
+    </button>
+
+    <button
+      type="button"
+      class="chip"
+      [class.active]="selectedStatus === 'UNQUALIFIED'"
+      (click)="setStatusFilter('UNQUALIFIED')"
+    >
+      Unqualified
+    </button>
+
+    <button
+      type="button"
+      class="chip"
+      [class.active]="selectedStatus === 'LOST'"
+      (click)="setStatusFilter('LOST')"
+    >
+      Lost
+    </button>
+  </div>
+
+  <!-- FILTER ROW -->
+  <div class="date-filter-row">
+    <div class="date-group">
+      <label>From Date</label>
+      <input type="date" [(ngModel)]="fromDate" />
+    </div>
+
+    <div class="date-group">
+      <label>To Date</label>
+      <input type="date" [(ngModel)]="toDate" />
+    </div>
+
+    <div class="rows-group">
+      <label>Rows / Page</label>
+      <select [(ngModel)]="pageSize" (change)="onPageSizeChange()">
+        <option [ngValue]="10">10</option>
+        <option [ngValue]="20">20</option>
+        <option [ngValue]="50">50</option>
+      </select>
+    </div>
+
+    <div class="date-actions">
+      <button type="button" class="btn-clear" (click)="clearFilters()">
+        Clear
+      </button>
+      <button type="button" class="btn-search" (click)="applyDateFilter()">
+        Search
+      </button>
+    </div>
+  </div>
+
+  <!-- TABLE CARD (fills remaining height, no page scroll) -->
+  <div class="table-card">
+    <div class="table-title">
+      Showing <b>{{ filteredLeads().length }}</b> Leads
+    </div>
+
+    <div *ngIf="loading" class="empty-text">Loading leads...</div>
+
+    <div *ngIf="!loading && filteredLeads().length > 0; else empty" class="table-wrap">
+      <!-- ✅ table scroll only if rows/page big -->
+      <div class="table-scroll" [style.--rows]="pageSize">
+        <table class="leads-table">
+          <thead>
+            <tr>
+              <th class="col-sr">#</th>
+              <th>Lead ID</th>
+              <th>Name</th>
+              <th>Contact</th>
+              <th>City</th>
+              <th>Source</th>
+              <th>Status</th>
+              <th>Date Time</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let lead of pagedLeads(); let i = index">
+              <td class="col-sr">{{ rowNumber(i) }}</td>
+              <td>{{ lead.irLeadId }}</td>
+              <td>{{ lead.irLeadName }}</td>
+              <td>{{ lead.irLeadContactNo }}</td>
+              <td>{{ lead.irLeadCity || '-' }}</td>
+              <td>{{ lead.irLeadSource || '-' }}</td>
+              <td>
+                <span class="badge" [ngClass]="statusClass(lead.irLeadStatus)">
+                  {{ lead.irLeadStatus }}
+                </span>
+              </td>
+              <td>{{ lead.irLeadDtime | date: 'dd-MMM-yy HH:mm' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ✅ Pagination controls -->
+      <div class="pagination-row">
+        <button class="pg-btn" (click)="goPrev()" [disabled]="currentPage === 1">
+          Prev
+        </button>
+
+        <span class="pg-text">Page {{ currentPage }} of {{ totalPages }}</span>
+
+        <button class="pg-btn" (click)="goNext()" [disabled]="currentPage === totalPages">
+          Next
+        </button>
+      </div>
+    </div>
+
+    <ng-template #empty>
+      <div class="empty-text" *ngIf="!loading">
+        No leads found for current filters.
+        <br />
+        Try clearing filters or add data from Postman.
+      </div>
+    </ng-template>
+  </div>
+</div>

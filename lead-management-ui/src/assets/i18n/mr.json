@@ -1,0 +1,36 @@
+{
+  "app": {
+    "title": "लीड नर्चरिंग ॲप्लिकेशन"
+  },
+  "common": {
+    "search": "शोधा",
+    "clear": "क्लिअर",
+    "loadingChart": "चार्ट लोड होत आहे..."
+  },
+  "filters": {
+    "from": "दिनांक (पासून)",
+    "to": "दिनांक (पर्यंत)"
+  },
+  "dashboard": {
+    "title": "डॅशबोर्ड",
+    "breadcrumb": "होम > डॅशबोर्ड",
+    "allLeads": "सर्व लीड्स",
+    "qualifiedLeads": "पात्र लीड्स",
+    "unqualifiedLeads": "अपात्र लीड्स",
+    "pendingLeads": "प्रलंबित लीड्स",
+    "lostLeads": "गमावलेल्या लीड्स",
+    "totalVsQualified": "एकूण विरुद्ध पात्र लीड्स",
+    "totalVsLost": "एकूण विरुद्ध गमावलेल्या लीड्स",
+    "totalLeads": "एकूण लीड्स",
+    "leadSubSource": "लीड सब-सोर्स",
+    "qualified": "पात्र",
+    "lost": "गमावलेल्या",
+    "total": "एकूण",
+    "of": "पैकी"
+  },
+  "sources": {
+    "website": "वेबसाइट",
+    "facebook": "फेसबुक",
+    "whatsapp": "व्हॉट्सअॅप"
+  }
+}

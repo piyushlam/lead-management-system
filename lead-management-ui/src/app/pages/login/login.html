@@ -1,0 +1,170 @@
+<div class="login-page">
+  <!-- ✅ APP TOAST (top-left) -->
+  <div
+    class="toast"
+    *ngIf="showToast"
+    [class.success]="toastType === 'success'"
+    [class.error]="toastType === 'error'"
+  >
+    {{ toastText }}
+  </div>
+
+  <!-- LEFT PANEL -->
+  <div class="left-panel">
+    <div class="left-time">{{ currentTime }} • {{ currentDate }}</div>
+
+    <div class="brand">
+      <img class="brand-logo" src="assets/hero-logo.png" alt="Hero" />
+      <div>
+        <div class="brand-title">Hero</div>
+        <div class="brand-subtitle">Lead Nurturing Application</div>
+      </div>
+    </div>
+
+    <!-- ✅ Reference-like Laptop (Pure CSS) -->
+    <div class="hero-illustration">
+      <div class="hero-laptop">
+        <div class="hero-lid">
+          <div class="hero-camera"></div>
+        </div>
+
+        <div class="hero-screen">
+          <div class="screen-top">
+            <div class="screen-dot red"></div>
+            <div class="screen-dot yellow"></div>
+            <div class="screen-dot green"></div>
+            <div class="screen-title">Lead Analytics</div>
+          </div>
+
+          <div class="screen-grid">
+            <!-- card 1 -->
+            <div class="mini-card">
+              <div class="mini-title">Pie</div>
+              <div class="mini-pie"></div>
+              <div class="mini-legend">
+                <span><i class="lg a"></i>Qualified</span>
+                <span><i class="lg b"></i>Lost</span>
+              </div>
+            </div>
+
+            <!-- card 2 -->
+            <div class="mini-card">
+              <div class="mini-title">Bar</div>
+              <div class="mini-bars">
+                <span style="height: 35%"></span>
+                <span style="height: 70%"></span>
+                <span style="height: 45%"></span>
+                <span style="height: 85%"></span>
+                <span style="height: 55%"></span>
+              </div>
+              <div class="mini-axis"></div>
+            </div>
+
+            <!-- card 3 wide -->
+            <div class="mini-card wide">
+              <div class="wide-head">
+                <div class="wide-title">User Analytics</div>
+                <div class="pill">Today</div>
+              </div>
+
+              <div class="wide-content">
+                <div class="kpi">
+                  <div class="kpi-num">248</div>
+                  <div class="kpi-text">All Leads</div>
+                </div>
+
+                <div class="kpi">
+                  <div class="kpi-num green">127</div>
+                  <div class="kpi-text">Qualified</div>
+                </div>
+
+                <div class="spark">
+                  <span style="height: 25%"></span>
+                  <span style="height: 60%"></span>
+                  <span style="height: 40%"></span>
+                  <span style="height: 75%"></span>
+                  <span style="height: 50%"></span>
+                  <span style="height: 88%"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-base">
+          <div class="base-notch"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-text">
+      Copyright Hero MotoCorp Ltd. 2025. All Rights Reserved.
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="right-panel">
+    <div class="login-card">
+      <div class="card-header">
+        <img class="small-logo" src="assets/hero-logo.png" alt="Hero" />
+        <div>
+          <div class="signin-title">SIGN IN TO YOUR ACCOUNT</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>USERNAME</label>
+        <input
+          class="form-control"
+          placeholder="Enter username"
+          [(ngModel)]="username"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>PASSWORD</label>
+        <input
+          type="password"
+          class="form-control"
+          placeholder="Enter password"
+          [(ngModel)]="password"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>CAPTCHA</label>
+        <div class="captcha-row">
+          <input
+            class="form-control"
+            placeholder="Enter captcha"
+            [(ngModel)]="captchaInput"
+          />
+
+          <button type="button" class="captcha-refresh" (click)="refreshCaptcha()">
+            <i class="bi bi-arrow-clockwise"></i>
+          </button>
+
+          <div class="captcha-box">
+            <span>{{ captchaValue }}</span>
+          </div>
+        </div>
+      </div>
+
+      <button class="login-btn" (click)="onLogin()" [disabled]="loading">
+        {{ loading ? 'Logging in...' : 'Login' }}
+      </button>
+
+      <div class="forgot">
+        <i class="bi bi-question-circle"></i>
+        <span>Forgot password?</span>
+        <a href="javascript:void(0)">click here</a>
+        <span>to reset password.</span>
+      </div>
+    </div>
+
+    <div class="support-bar">
+      For Assistance Call: <b>1800-268-0018</b> | Email:
+      <b>helpdesk@heromotocorp.com</b>
+    </div>
+  </div>
+</div>

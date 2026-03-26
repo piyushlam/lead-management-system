@@ -1,0 +1,36 @@
+{
+  "app": {
+    "title": "Lead Nurturing Application"
+  },
+  "common": {
+    "search": "Search",
+    "clear": "Clear",
+    "loadingChart": "Loading chart..."
+  },
+  "filters": {
+    "from": "Date (From)",
+    "to": "Date (To)"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "breadcrumb": "HOME > DASHBOARD",
+    "allLeads": "ALL LEADS",
+    "qualifiedLeads": "QUALIFIED LEADS",
+    "unqualifiedLeads": "UNQUALIFIED LEADS",
+    "pendingLeads": "PENDING LEADS",
+    "lostLeads": "LOST LEADS",
+    "totalVsQualified": "Total vs Qualified Leads",
+    "totalVsLost": "Total vs Lost Leads",
+    "totalLeads": "Total Leads",
+    "leadSubSource": "Lead Sub-Source",
+    "qualified": "Qualified",
+    "lost": "Lost",
+    "total": "Total",
+    "of": "of"
+  },
+  "sources": {
+    "website": "Website",
+    "facebook": "FaceBook",
+    "whatsapp": "Whatsapp"
+  }
+}

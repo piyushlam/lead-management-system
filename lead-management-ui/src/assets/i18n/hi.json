@@ -1,0 +1,36 @@
+{
+  "app": {
+    "title": "लीड नर्चरिंग एप्लिकेशन"
+  },
+  "common": {
+    "search": "खोजें",
+    "clear": "साफ करें",
+    "loadingChart": "चार्ट लोड हो रहा है..."
+  },
+  "filters": {
+    "from": "तारीख (शुरू)",
+    "to": "तारीख (अंत)"
+  },
+  "dashboard": {
+    "title": "डैशबोर्ड",
+    "breadcrumb": "होम > डैशबोर्ड",
+    "allLeads": "सभी लीड्स",
+    "qualifiedLeads": "योग्य लीड्स",
+    "unqualifiedLeads": "अयोग्य लीड्स",
+    "pendingLeads": "लंबित लीड्स",
+    "lostLeads": "खोई हुई लीड्स",
+    "totalVsQualified": "कुल बनाम योग्य लीड्स",
+    "totalVsLost": "कुल बनाम खोई हुई लीड्स",
+    "totalLeads": "कुल लीड्स",
+    "leadSubSource": "लीड सब-सोर्स",
+    "qualified": "योग्य",
+    "lost": "खोई हुई",
+    "total": "कुल",
+    "of": "में से"
+  },
+  "sources": {
+    "website": "वेबसाइट",
+    "facebook": "फेसबुक",
+    "whatsapp": "व्हाट्सऐप"
+  }
+}

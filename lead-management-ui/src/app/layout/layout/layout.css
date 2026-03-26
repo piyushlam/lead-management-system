@@ -1,0 +1,20 @@
+.app-shell {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  background: #f3f5f8;
+  overflow: hidden;          /* ✅ no page scroll */
+}
+
+.main-area {
+  display: grid;
+  grid-template-rows: 56px 1fr;
+  height: 100vh;             /* ✅ lock height */
+  overflow: hidden;          /* ✅ */
+}
+
+.content {
+  padding: 16px;
+  overflow: hidden;          /* ✅ page scroll OFF */
+  min-height: 0;             /* ✅ allow inner scroll boxes */
+}

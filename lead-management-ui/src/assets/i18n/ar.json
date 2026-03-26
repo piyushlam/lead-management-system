@@ -1,0 +1,36 @@
+{
+  "app": {
+    "title": "تطبيق رعاية العملاء المحتملين"
+  },
+  "common": {
+    "search": "بحث",
+    "clear": "مسح",
+    "loadingChart": "جارٍ تحميل الرسم البياني..."
+  },
+  "filters": {
+    "from": "التاريخ (من)",
+    "to": "التاريخ (إلى)"
+  },
+  "dashboard": {
+    "title": "لوحة التحكم",
+    "breadcrumb": "الرئيسية > لوحة التحكم",
+    "allLeads": "كل العملاء المحتملين",
+    "qualifiedLeads": "العملاء المؤهلون",
+    "unqualifiedLeads": "العملاء غير المؤهلين",
+    "pendingLeads": "العملاء المعلّقون",
+    "lostLeads": "العملاء المفقودون",
+    "totalVsQualified": "الإجمالي مقابل المؤهلين",
+    "totalVsLost": "الإجمالي مقابل المفقودين",
+    "totalLeads": "إجمالي العملاء",
+    "leadSubSource": "المصدر الفرعي للعملاء",
+    "qualified": "مؤهل",
+    "lost": "مفقود",
+    "total": "الإجمالي",
+    "of": "من"
+  },
+  "sources": {
+    "website": "الموقع",
+    "facebook": "فيسبوك",
+    "whatsapp": "واتساب"
+  }
+}

@@ -1,0 +1,175 @@
+<div class="dashboard">
+  <div class="page-head">
+    <div class="head-left">
+      <div class="app-title">{{ 'app.title' | translate }}</div>
+      <div class="head-sub">{{ 'dashboard.title' | translate }}</div>
+    </div>
+
+    <div class="head-right">
+      <div class="app-breadcrumb">{{ 'dashboard.breadcrumb' | translate }}</div>
+    </div>
+  </div>
+
+  <div class="filter-bar">
+    <div class="filter-group">
+      <label>{{ 'filters.from' | translate }}</label>
+      <input type="date" [(ngModel)]="filterFrom" />
+    </div>
+
+    <div class="filter-group">
+      <label>{{ 'filters.to' | translate }}</label>
+      <input type="date" [(ngModel)]="filterTo" />
+    </div>
+
+    <div class="filter-actions">
+      <button type="button" class="btn-clear" (click)="onClearFilters()">
+        {{ 'common.clear' | translate }}
+      </button>
+      <button type="button" class="btn-search" (click)="onSearchClick()">
+        {{ 'common.search' | translate }}
+      </button>
+    </div>
+  </div>
+
+  <div class="summary-row">
+    <div class="summary-card summary-all">
+      <div class="summary-title">
+        <span class="summary-icon summary-all-icon">
+          <i class="bi bi-people-fill"></i>
+        </span>
+        <span>{{ 'dashboard.allLeads' | translate }}</span>
+      </div>
+      <div class="summary-value">
+        <span *ngIf="!loadingSummary; else loadingDots">{{ total }}</span>
+      </div>
+    </div>
+
+    <div class="summary-card summary-qualified">
+      <div class="summary-title">
+        <span class="summary-icon summary-qualified-icon">
+          <i class="bi bi-person-check-fill"></i>
+        </span>
+        <span>{{ 'dashboard.qualifiedLeads' | translate }}</span>
+      </div>
+      <div class="summary-value">
+        <span *ngIf="!loadingSummary; else loadingDots">{{ qualified }}</span>
+      </div>
+    </div>
+
+    <div class="summary-card summary-unqualified">
+      <div class="summary-title">
+        <span class="summary-icon summary-unqualified-icon">
+          <i class="bi bi-person-x-fill"></i>
+        </span>
+        <span>{{ 'dashboard.unqualifiedLeads' | translate }}</span>
+      </div>
+      <div class="summary-value">
+        <span *ngIf="!loadingSummary; else loadingDots">{{ unqualified }}</span>
+      </div>
+    </div>
+
+    <div class="summary-card summary-pending">
+      <div class="summary-title">
+        <span class="summary-icon summary-pending-icon">
+          <i class="bi bi-clock-history"></i>
+        </span>
+        <span>{{ 'dashboard.pendingLeads' | translate }}</span>
+      </div>
+      <div class="summary-value">
+        <span *ngIf="!loadingSummary; else loadingDots">{{ pending }}</span>
+      </div>
+    </div>
+
+    <div class="summary-card summary-lost">
+      <div class="summary-title">
+        <span class="summary-icon summary-lost-icon">
+          <i class="bi bi-x-octagon-fill"></i>
+        </span>
+        <span>{{ 'dashboard.lostLeads' | translate }}</span>
+      </div>
+      <div class="summary-value">
+        <span *ngIf="!loadingSummary; else loadingDots">{{ lost }}</span>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #loadingDots>
+    <span class="loading-dots">...</span>
+  </ng-template>
+
+  <div class="middle-row">
+    <div class="chart-card">
+      <div class="chart-title">{{ 'dashboard.totalVsQualified' | translate }}</div>
+
+      <div class="donut-wrapper">
+        <div class="donut" [style.background]="donutBackgroundQualified()">
+          <div class="donut-inner">
+            <div class="donut-number">{{ total }}</div>
+            <div class="donut-label">{{ 'dashboard.totalLeads' | translate }}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chart-subtext">
+        {{ 'dashboard.qualified' | translate }}: <b>{{ qualified }}</b>
+        {{ 'dashboard.of' | translate }} <b>{{ total }}</b>
+        ({{ qualifiedPercent }}%)
+      </div>
+
+      <div class="chart-legend">
+        <span><span class="dot dot-total"></span>{{ 'dashboard.total' | translate }}</span>
+        <span><span class="dot dot-qualified"></span>{{ 'dashboard.qualified' | translate }}</span>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-title">{{ 'dashboard.totalVsLost' | translate }}</div>
+
+      <div class="donut-wrapper">
+        <div class="donut" [style.background]="donutBackgroundLost()">
+          <div class="donut-inner">
+            <div class="donut-number">{{ total }}</div>
+            <div class="donut-label">{{ 'dashboard.totalLeads' | translate }}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chart-subtext">
+        {{ 'dashboard.lost' | translate }}: <b>{{ lost }}</b>
+        {{ 'dashboard.of' | translate }} <b>{{ total }}</b> ({{ lostPercent }}%)
+      </div>
+
+      <div class="chart-legend">
+        <span><span class="dot dot-total"></span>{{ 'dashboard.total' | translate }}</span>
+        <span><span class="dot dot-lost"></span>{{ 'dashboard.lost' | translate }}</span>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-title-row">
+        <div class="chart-title">{{ 'dashboard.leadSubSource' | translate }}</div>
+
+        <div class="bar-legend-top">
+          <span><span class="dot dot-website"></span>{{ 'sources.website' | translate }}</span>
+          <span><span class="dot dot-facebook"></span>{{ 'sources.facebook' | translate }}</span>
+          <span><span class="dot dot-whatsapp"></span>{{ 'sources.whatsapp' | translate }}</span>
+        </div>
+      </div>
+
+      <div class="bar-chart" *ngIf="!loadingLeads; else loadingBars">
+        <div class="bar-group" *ngFor="let row of barData">
+          <div class="bars">
+            <div class="bar bar-website" [style.height]="barHeight(row.website)"></div>
+            <div class="bar bar-facebook" [style.height]="barHeight(row.facebook)"></div>
+            <div class="bar bar-whatsapp" [style.height]="barHeight(row.whatsapp)"></div>
+          </div>
+          <div class="bar-day">{{ row.day | slice:0:3 }}</div>
+        </div>
+      </div>
+
+      <ng-template #loadingBars>
+        <div class="bar-chart-loading">{{ 'common.loadingChart' | translate }}</div>
+      </ng-template>
+    </div>
+  </div>
+</div>

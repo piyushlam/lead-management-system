@@ -1,0 +1,154 @@
+.sidebar {
+  width: 230px;
+  background: #050b18;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header */
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #1b2233;
+}
+
+.app-logo-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: #e53935;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 18px;
+  box-shadow: 0 8px 18px rgba(229, 57, 53, 0.25);
+}
+
+.app-text {
+  margin-left: 10px;
+}
+
+.app-title {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.app-subtitle {
+  font-size: 11px;
+  color: #8a93a5;
+  margin-top: 2px;
+}
+
+/* Menu section */
+.menu-section {
+  padding: 12px 0 8px;
+}
+
+.menu-heading {
+  padding: 6px 20px 10px;
+  font-size: 11px;
+  letter-spacing: 0.8px;
+  color: #7b8498;
+  text-transform: uppercase;
+}
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 6px; /* ✅ spacing like reference */
+  padding: 0 10px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  font-size: 13px;
+  color: #c2c8d6;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.menu-item i {
+  width: 22px;
+  margin-right: 10px;
+  font-size: 16px;
+  display: inline-flex;
+  justify-content: center;
+}
+
+.menu-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+}
+
+/* Active item */
+.menu-item.active {
+  background: #f44336;
+  color: #ffffff;
+  box-shadow: 0 10px 18px rgba(244, 67, 54, 0.28);
+}
+
+.menu-item.active i {
+  color: #ffffff;
+}
+
+/* Footer pinned to bottom */
+.sidebar-footer {
+  margin-top: auto;
+  padding: 16px 18px 20px;
+  border-top: 1px solid #1b2233;
+}
+
+.help-box {
+  background: #0b1220;
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  font-size: 11px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.help-title {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.help-phone,
+.help-email {
+  color: #a5afc4;
+  line-height: 1.4;
+}
+
+/* Logout */
+.logout-btn {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  background: #f97316;
+  color: #ffffff;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.logout-btn i {
+  margin-right: 8px;
+}
+
+.logout-btn:hover {
+  background: #ea580c;
+}

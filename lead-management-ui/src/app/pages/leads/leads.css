@@ -1,0 +1,406 @@
+/* Whole page inside content area (no page scroll) */
+.leads-page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 20px;
+  background: #f5f7fb;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Header */
+.leads-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.page-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.page-subtitle {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.right-filters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-box input {
+  width: 360px;
+  max-width: 42vw;
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  padding: 0 12px;
+  font-size: 13px;
+  outline: none;
+  background: #ffffff;
+}
+.search-box input:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
+}
+
+/* Chips */
+.status-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.chip {
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  color: #374151;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 8px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+.chip:hover {
+  background: #f9fafb;
+  transform: translateY(-1px);
+}
+.chip.active {
+  background: #ef4444;
+  border-color: #ef4444;
+  color: #ffffff;
+  box-shadow: 0 10px 18px rgba(239, 68, 68, 0.16);
+}
+
+/* Filter row */
+.date-filter-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  background: #ffffff;
+  border: 1px solid #eef2f7;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+  margin-bottom: 14px;
+}
+.date-group,
+.rows-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.date-group label,
+.rows-group label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #6b7280;
+}
+.date-group input,
+.rows-group select {
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  padding: 0 10px;
+  font-size: 13px;
+  outline: none;
+  background: #ffffff;
+}
+.date-group input:focus,
+.rows-group select:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
+}
+.date-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 10px;
+}
+.btn-clear,
+.btn-search {
+  height: 38px;
+  padding: 0 14px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 900;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+.btn-clear {
+  background: #ffffff;
+  border-color: #e5e7eb;
+  color: #111827;
+}
+.btn-clear:hover {
+  background: #f3f4f6;
+  transform: translateY(-1px);
+}
+.btn-search {
+  background: #111827;
+  color: #ffffff;
+}
+.btn-search:hover {
+  background: #000000;
+  transform: translateY(-1px);
+}
+
+/* Card fills remaining height */
+.table-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid #eef2f7;
+  border-radius: 14px;
+  padding: 12px;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+  min-height: 0; /* ✅ allow inner scroll */
+}
+
+.table-title {
+  font-size: 13px;
+  color: #374151;
+  margin-bottom: 10px;
+}
+
+.empty-text {
+  padding: 18px 10px;
+  font-size: 13px;
+  color: #6b7280;
+  text-align: center;
+}
+
+/* Wrap: table takes space, pagination stays at bottom */
+.table-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* ✅ Only table scrolls when needed */
+.table-scroll {
+  --row-h: 46px;
+  --head-h: 44px;
+  --rows: 10;
+
+  /* visible height depends on rows/page, but never exceed available area */
+  max-height: min(
+    calc(var(--head-h) + (var(--rows) * var(--row-h))),
+    100%
+  );
+
+  overflow-y: auto;
+  overflow-x: auto;
+  border: 1px solid #eef2f7;
+  border-radius: 12px;
+  background: #ffffff;
+  min-height: 0;
+}
+.table-scroll {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: auto;
+}
+
+/* Table */
+.leads-table {
+  width: 100%;
+  min-width: 980px;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+/* Header sticky inside scroll box */
+.leads-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #f8fafc;
+  font-size: 12px;
+  font-weight: 900;
+  color: #374151;
+  text-align: left;
+  padding: 12px 12px;
+  white-space: nowrap;
+  border-bottom: 1px solid #eef2f7; /* ✅ light */
+}
+
+/* ✅ Grid lines (light) */
+/* ✅ full grid lines */
+.leads-table {
+  border-collapse: collapse;   /* important for perfect lines */
+  width: 100%;
+}
+
+/* Header cells */
+.leads-table thead th {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;   /* line around header cells */
+}
+
+/* Body cells */
+.leads-table tbody td {
+  border: 1px solid #e5e7eb;   /* ✅ lines between every TR/TD */
+}
+
+/* Optional: hover */
+.leads-table tbody tr:hover {
+  background: #fafafa;
+}
+
+/* ✅ Horizontal separation line for every row */
+.leads-table tbody td {
+  font-size: 13px;
+  color: #111827;
+  padding: 12px 12px;
+  vertical-align: middle;
+  border-bottom: 1px solid #eef2f7; /* ✅ light horizontal */
+}
+.leads-table tbody tr:hover {
+  background: #fafafa;
+}
+.leads-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Sr no */
+.col-sr {
+  width: 56px;
+  text-align: center !important;
+  font-weight: 900;
+  color: #6b7280;
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+  border: 1px solid transparent;
+}
+.badge-qualified {
+  background: rgba(34, 197, 94, 0.12);
+  border-color: rgba(34, 197, 94, 0.22);
+  color: #16a34a;
+}
+.badge-unqualified {
+  background: rgba(249, 115, 22, 0.12);
+  border-color: rgba(249, 115, 22, 0.22);
+  color: #ea580c;
+}
+.badge-lost {
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.22);
+  color: #dc2626;
+}
+.badge-default {
+  background: rgba(107, 114, 128, 0.10);
+  border-color: rgba(107, 114, 128, 0.18);
+  color: #374151;
+}
+
+/* Pagination fixed at bottom of card */
+.pagination-row {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+
+.pg-btn {
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 900;
+  color: #111827;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+.pg-btn:hover {
+  background: #f3f4f6;
+  transform: translateY(-1px);
+}
+.pg-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+.pg-text {
+  font-size: 12px;
+  color: #6b7280;
+  font-weight: 900;
+}
+
+/* Responsive */
+@media (max-width: 950px) {
+  .leads-header {
+    flex-direction: column;
+  }
+  .search-box input {
+    width: 100%;
+    max-width: 100%;
+  }
+  .date-filter-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .date-actions {
+    margin-left: 0;
+    justify-content: flex-end;
+  }
+}
+
+
+
+
+
+
+
+/* ✅ Strong TR horizontal lines like screenshot */
+.leads-table {
+  border-collapse: collapse; /* required for perfect lines */
+}
+
+/* Header line */
+.leads-table thead th {
+  border-bottom: 2px solid #cbd5e1;  /* slightly dark */
+}
+
+/* Row lines (main thing) */
+.leads-table tbody tr {
+  border-bottom: 2px solid #94a3b8;  /* ✅ dark horizontal line */
+}
+
+/* last row optional */
+.leads-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+/* keep vertical lines light (optional) */
+.leads-table thead th,
+.leads-table tbody td {
+  border-right: 1px solid #e5e7eb;
+}
+.leads-table thead th:last-child,
+.leads-table tbody td:last-child {
+  border-right: none;
+}

@@ -1,0 +1,74 @@
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="topbar-path">
+      <span class="path-home">HOME</span>
+      <span class="path-sep">&gt;</span>
+      <span class="path-current">DASHBOARD</span>
+    </div>
+  </div>
+
+  <div class="topbar-right">
+    <div class="select-wrapper">
+      <select [(ngModel)]="selectedCountry">
+        <option value="India">India</option>
+        <option value="Bhutan">Bhutan</option>
+        <option value="Nepal">Nepal</option>
+        <option value="Bangladesh">Bangladesh</option>
+        <option value="Sri Lanka">Sri Lanka</option>
+        <option value="UAE">UAE</option>
+        <option value="USA">USA</option>
+      </select>
+    </div>
+
+    <div class="select-wrapper">
+      <select [(ngModel)]="selectedLanguage" (change)="changeLanguage(selectedLanguage)">
+        <option value="en">English (India)</option>
+        <option value="en-us">English (US)</option>
+        <option value="hi">Hindi</option>
+        <option value="mr">Marathi</option>
+        <option value="gu">Gujarati</option>
+        <option value="bn">Bengali</option>
+        <option value="ar">Arabic</option>
+      </select>
+    </div>
+
+    <div class="notif-wrap">
+      <button class="icon-button notification-btn" (click)="toggleNotifications()">
+        <i class="bi bi-bell"></i>
+        <span class="badge" *ngIf="notificationCount > 0">
+          {{ notificationCount }}
+        </span>
+      </button>
+
+      <div class="notif-panel" *ngIf="showNotifPanel">
+        <div class="notif-head">
+          <div class="notif-title">Notifications</div>
+          <button type="button" class="notif-x" (click)="closeNotifications()">✕</button>
+        </div>
+
+        <div class="notif-list" *ngIf="notifications.length > 0; else emptyNotifs">
+          <div class="notif-item" *ngFor="let n of notifications">
+            <div class="notif-text">{{ n.text }}</div>
+            <div class="notif-time">{{ n.time }}</div>
+          </div>
+        </div>
+
+        <ng-template #emptyNotifs>
+          <div class="notif-empty">No new notifications</div>
+        </ng-template>
+
+        <button type="button" class="notif-clear" (click)="clearAllNotifications()">
+          Clear All
+        </button>
+      </div>
+    </div>
+
+    <div class="user-chip">
+      <div class="user-avatar">
+        {{ userInitial }}
+      </div>
+      <span class="user-name">{{ userName }}</span>
+      <i class="bi bi-caret-down-fill caret"></i>
+    </div>
+  </div>
+</div>
