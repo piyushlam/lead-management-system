@@ -71,7 +71,7 @@ export interface Lead {
 export class LeadService {
   // 👇 yahan apna Spring Boot ka port daal
   // example: 8082 ho to 8080 ki jagah 8082 kar dena
-  private readonly baseUrl = 'http://localhost:8082/api/lead';
+ private readonly baseUrl = 'https://lead-management-system-production-b5f3.up.railway.app/api/lead';
 
   constructor(private http: HttpClient) {}
 
