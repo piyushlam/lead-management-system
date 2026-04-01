@@ -268,7 +268,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   toastType: ToastType = 'success';
   private toastTimer: any;
 
-  private readonly authUrl = 'http://localhost:8082/api/auth/login';
+  private readonly authUrl = 'https://lead-management-system-production-b5f3.up.railway.app/api/auth/login';
 
   constructor(
     private http: HttpClient,
